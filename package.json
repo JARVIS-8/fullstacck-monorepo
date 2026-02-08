@@ -1,0 +1,26 @@
+{
+  "name": "fullstacck-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@10.28.2",
+  "scripts":{
+    "dev:web": "pnpm --filter @apps/web dev",
+    "dev:api": "pnpm --filter @apps/api dev",
+    "dev": "pnpm -r --parallel dev",
+
+    "build:web": "pnpm --filter @apps/web build",
+    "build:api": "pnpm --filter @apps/api build",
+    "build": "pnpm -r --parallel build",
+
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test",
+
+    "db:up": "docker compose -f infra/docker-compose.yml up -d",
+    "db:down": "docker compose -f infra/docker-compose.yml down",
+    "db:reset": "docker compose -f infra/docker-compose.yml down -v",
+
+    "prisma:migrate": "pnpm --filter @apps/api prisma migrate",
+    "prisma:studio": "pnpm --filter @apps/api prisma studio",
+    "prisma:seed": "pnpm --filter @apps/api prisma seed"
+ }
+}
